@@ -13,6 +13,13 @@ object manzana {
 		//madurez += 1
 	}
 
+    method position() = game.at(3,5)
+    method image() = "manzana.png"
+
+    method serComida(){
+        game.removeVisual(self)
+    }
+
 }
 
 object alpiste {
@@ -20,6 +27,15 @@ object alpiste {
 	method energiaQueOtorga() {
 		return 20
 	} 
+
+    method position() = game.at(7,8)
+
+    method image() = "alpiste.png"
+
+     method serComida(){
+        game.removeVisual(self)
+    }
+
 
 }
 

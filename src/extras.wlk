@@ -25,3 +25,17 @@ object nido{
 }
 
 
+object fondo {
+
+    method position() = game.origin()
+
+    var escenario = 0
+
+    method image() {
+        return "fondo" + escenario + ".jpg"
+    }
+
+    method cambiar(){
+        escenario = (escenario + 1 ) % 2
+    }
+}
