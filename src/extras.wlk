@@ -16,12 +16,20 @@ object silvestre{
     method estaPermitido() {
         return self.position()
     }
+
+    method esSolido(){
+        return false
+    }
 }
 
 object nido{
     var property position = game.at(8, 6)
 
     method image() = "nido.png"
+
+    method esSolido(){
+        return false
+    }
 }
 
 
@@ -38,6 +46,10 @@ object fondo {
     method cambiar(){
         escenario = (escenario + 1 ) % 2
     }
+    
+    method esSolido(){
+        return false
+    }
 }
 
 object reloj{
@@ -52,4 +64,21 @@ object reloj{
         second = second + 1
     }
 
+    method esSolido(){
+        return false
+    }
+
+}
+
+object muro {
+
+    method image() {
+        return "muro.png"
+    }
+
+    method position() = game.at(5,5)
+
+    method esSolido(){
+        return true
+    }
 }

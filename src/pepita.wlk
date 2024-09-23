@@ -81,9 +81,21 @@ object pepita {
     }
     */
     method validarMover(direccion){
+        const siguientePos = direccion.siguiente(self.position())
         self.validarCapacidadMovimiento()
-        tablero.validarDentro(direccion.siguiente(self.position()))
+        tablero.validarDentro(siguientePos)
+        self.validarAtravesables(siguientePos)
+    }
 
+    method validarAtravesables(_position){
+        if(self.hayAlgoSolido(_position)){
+            self.error("no puedo pasar")
+        }
+    }
+    method hayAlgoSolido(_position){
+        return game.getObjectsIn(_position).any( { cosa => cosa.esSolido()})
+        
+        //return game.uniqueCollider(self).esSolido()
     }
 
     method validarCapacidadMovimiento(){
@@ -113,7 +125,7 @@ object pepita {
 
     method aplicarGravedad() {
         self.validarMover(abajo)
-        position = game.at(position.x(), position.y() - 1)
+        position = abajo.siguiente(position)
     }
 
 

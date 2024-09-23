@@ -19,6 +19,10 @@ object manzana {
     method serComida(){
         game.removeVisual(self)
     }
+    
+    method esSolido(){
+        return false
+    }
 
 }
 
@@ -36,6 +40,9 @@ object alpiste {
         game.removeVisual(self)
     }
 
+    method esSolido(){
+        return false
+    }
 
 }
 

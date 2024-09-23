@@ -22,6 +22,7 @@ program pepitaGame {
 
     game.addVisual(fondo)
     game.addVisual(reloj)
+    game.addVisual(muro)
     game.addVisual(nido)
     game.addVisual(silvestre)
     game.addVisual(manzana)
@@ -30,7 +31,10 @@ program pepitaGame {
     
     //colisiones
     //game.onCollideDo( pepita, { comida => pepita.comida(comida)})
+    
 
+
+    //tick events
     game.onTick(800, "gravedad", {pepita.aplicarGravedad()})
     //game.onTick(5000, "cambioFondo", {fondo.cambiar()})
     game.onTick(1000, "segundos", {reloj.tick()})
