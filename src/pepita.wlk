@@ -111,7 +111,7 @@ object pepita {
     }
 
 
-    method gravedad() {
+    method aplicarGravedad() {
         self.validarMover(abajo)
         position = game.at(position.x(), position.y() - 1)
     }

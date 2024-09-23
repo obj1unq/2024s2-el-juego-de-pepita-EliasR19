@@ -39,3 +39,17 @@ object fondo {
         escenario = (escenario + 1 ) % 2
     }
 }
+
+object reloj{
+
+    var second = 0
+
+    method text() = second.toString()
+
+    method position() = game.at(0, 8)
+
+    method tick() {
+        second = second + 1
+    }
+
+}
