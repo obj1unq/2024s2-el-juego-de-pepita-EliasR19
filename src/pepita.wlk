@@ -38,9 +38,16 @@ object pepita {
     // con cambio de estado por variable (Recordado)
     method ganar() {
         estado = victoriosa
+        game.say(self, "gané!")
+        game.schedule(100, {game.stop() })
+    
     }
     method perder() {
         estado = muerta
+        game.say(self, "perdí!")
+        game.schedule(100, {game.stop() })
+    
+        
     }
         
 
@@ -56,6 +63,9 @@ object pepita {
 	method volar(kms) {
         self.validarVolar(kms)  
 		energia = energia - self.energiaAGastar(kms)
+        if(!self.puedeVolar(1)){
+            self.perder()
+        }
 	}
 
     method mover(direccion){
@@ -163,10 +173,6 @@ object muerta {
     method puedeMover(){
         return false
     }
-    method comprobarFinDeJuego(personaje){
-        game.say(personaje, "perdí!")
-        game.schedule(100, {game.stop() })
-    }
 
 }
 object victoriosa {
@@ -174,10 +180,6 @@ object victoriosa {
         return false
     }
 
-    method comprobarFinDeJuego(personaje){
-        game.say(personaje, "gané!")
-        game.schedule(100, {game.stop() })
-    }
 } 
 object viva {
     method puedeMover(){
