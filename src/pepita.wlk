@@ -74,7 +74,7 @@ object pepita {
         
         position = direccion.siguiente(self.position())
         //self.estado().comprobarFinDeJuego(self)
-        estado.comprobarFinDeJuego(self)
+        
     }
 
 
