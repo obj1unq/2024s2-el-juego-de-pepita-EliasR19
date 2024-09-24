@@ -20,6 +20,10 @@ object silvestre{
     method esSolido(){
         return false
     }
+
+    method colisiono(pj){
+        pj.perder()   
+    }
 }
 
 object nido{
@@ -29,6 +33,10 @@ object nido{
 
     method esSolido(){
         return false
+    }
+
+    method colisiono(pj){
+            pj.ganar()
     }
 }
 
@@ -46,9 +54,13 @@ object fondo {
     method cambiar(){
         escenario = (escenario + 1 ) % 2
     }
-    
+
     method esSolido(){
         return false
+    }
+
+    method colisiono(pj){
+        
     }
 }
 

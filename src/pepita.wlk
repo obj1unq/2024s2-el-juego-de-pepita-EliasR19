@@ -8,7 +8,7 @@ object pepita {
     var property position = game.at(0,3)
     var destino = nido
     var cazador = silvestre
-
+    var estado = viva
     
     method image(){
         /*      No permite faciles cambios a futuro si hay muchos estados
@@ -18,9 +18,12 @@ object pepita {
             return "pepita.png"
         }
         */
-        return "pepita-" + self.estado().toString() + ".png"
+        // return "pepita-" + self.estado().toString() + ".png"
+        return "pepita-" + estado.toString() + ".png"
     }
      
+//Estados
+    /* Con cambio de esatdo que se calcula en el momento (Calculado)
     method estado(){
         return if(self.estaEnDestino()){
             victoriosa
@@ -31,7 +34,17 @@ object pepita {
            viva
         }
     }
+    */  
+    // con cambio de estado por variable (Recordado)
+    method ganar() {
+        estado = victoriosa
+    }
+    method perder() {
+        estado = muerta
+    }
         
+
+/// Acciones
 	method energia() {
 		return energia
 	}
@@ -50,7 +63,8 @@ object pepita {
         self.volar(1)       //las cosas que pueden romoer hacerlas primero, si no puede volar X distancia, directamente no se mueve. Si fuera al reves se podría mover igual.
         
         position = direccion.siguiente(self.position())
-        self.estado().comprobarFinDeJuego(self)
+        //self.estado().comprobarFinDeJuego(self)
+        estado.comprobarFinDeJuego(self)
     }
 
 
@@ -99,7 +113,7 @@ object pepita {
     }
 
     method validarCapacidadMovimiento(){
-        if(!self.estado().puedeMover()){
+        if(!estado.puedeMover()){
             self.error("No puedo moverme")
         }
     }
@@ -114,14 +128,16 @@ object pepita {
             self.error("No tengo energia para volar")
         }
     }
-
-    method comerAhi(){
+/*
+    method comerAhi(){  /con tecla
         const comida = game.uniqueCollider(self)
         self.comer(comida)
-        game.removeVisual(comida)
-        //comida.serComida()
+        comida.serComida()
     }
-
+*/
+    method comerAhi(comida) {//con colisiones
+        self.comer(comida)
+    }
 
     method aplicarGravedad() {
         self.validarMover(abajo)
@@ -149,7 +165,7 @@ object muerta {
     }
     method comprobarFinDeJuego(personaje){
         game.say(personaje, "perdí!")
-        game.stop()
+        game.schedule(100, {game.stop() })
     }
 
 }
@@ -160,7 +176,7 @@ object victoriosa {
 
     method comprobarFinDeJuego(personaje){
         game.say(personaje, "gané!")
-        game.stop()
+        game.schedule(100, {game.stop() })
     }
 } 
 object viva {

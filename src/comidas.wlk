@@ -24,6 +24,10 @@ object manzana {
         return false
     }
 
+    method colisiono(pj){
+        self.serComida()
+    }
+
 }
 
 object alpiste {
@@ -42,6 +46,11 @@ object alpiste {
 
     method esSolido(){
         return false
+    }
+
+    method colisiono(pj){
+        pj.comer(self)
+        self.serComida()
     }
 
 }

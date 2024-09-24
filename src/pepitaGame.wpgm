@@ -18,7 +18,7 @@ program pepitaGame {
     keyboard.d().onPressDo({pepita.mover(derecha)})
     keyboard.s().onPressDo({pepita.mover(abajo)})
     keyboard.a().onPressDo({pepita.mover(izquierda)})
-    keyboard.c().onPressDo({pepita.comerAhi() })
+    //keyboard.c().onPressDo({pepita.comerAhi() })
 
     game.addVisual(fondo)
     game.addVisual(reloj)
@@ -31,7 +31,7 @@ program pepitaGame {
     
     //colisiones
     //game.onCollideDo( pepita, { comida => pepita.comida(comida)})
-    
+    game.onCollideDo(pepita, { cosa => cosa.colisiono(pepita)})
 
 
     //tick events
